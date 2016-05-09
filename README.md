@@ -1,3 +1,10 @@
+### ⚠️ Update ⚠️
+I've just been informed by [@jixtes](https://github.com/jixtes) that Google already has the `Amharic-English` implementation.
+
+Head on to [Google Input](http://www.google.com/inputtools/try/) and select the `Amharic` input. It requires a working Internet connection for it to come-up with the predictions.
+
+**So now, `eKeyboard` project is more of a reimplementation.**
+
 ### eKeyboard
 Make typing Amharic [on mobile] great [again]. (no association)
 
@@ -54,5 +61,6 @@ I'm currently a MSc. student and have two full-time jobs, so this project will b
 - [@haworku](http://github.com/haworku)
 - Eskinder, co-founder of [AhdooTec](www.ahadootec.com)
 - [ሹክሹክታ Facebook group](https://www.facebook.com/Shukshukta)
+- [@jixtes](https://github.com/jixtes)
 
 🌟🌟🌟 **If you have any idea please create an issue or a merge request.** 🌟🌟🌟

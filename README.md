@@ -1,5 +1,5 @@
 ### ⚠️ Update ⚠️
-I've just been informed by [@jixtes](https://github.com/jixtes) that Google already has the `Amharic-English` implementation.
+I've been informed by [@jixtes](https://github.com/jixtes) that Google already has the `Amharic-English` implementation.
 
 Head on to [Google Input](http://www.google.com/inputtools/try/) and select the `Amharic` input. It requires a working Internet connection for it to come-up with the predictions.
 

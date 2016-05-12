@@ -43,9 +43,9 @@ module.exports = (url, options) => {
           if (options.frequency === true) {
             const frequency = {};
 
-            allWords.forEach((word) => {
+            allWords.every((word) => {
               frequency[word] = frequency.hasOwnProperty(word) === true ? ++frequency[word] : 1;
-              return false;
+              return true;
             });
 
             resolve(frequency);

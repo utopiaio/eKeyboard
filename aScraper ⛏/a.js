@@ -34,7 +34,7 @@ module.exports = (url, options) => {
         } else {
           let allWords = cheerio.load(res.text)(options.selector)
                                 .text()
-                                .replace(/[\u135D-\u137C\፡]/g, ' ') // some use :: instead of ።
+                                .replace(/[\u135D-\u137C፡]/g, ' ') // some use :: instead of ።
                                 .match(/[\u1200-\u137C]{2,}/g); // ignoring single letter words
 
           if (options.unique === true) {

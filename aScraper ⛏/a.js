@@ -26,7 +26,7 @@ const contentWords = (url, options) => {
 
   const promise = new Promise((resolve, reject) => {
     request
-      .get(encodeURI(url))
+      .get(encodeURI(decodeURI(url)))
       .end((err, res) => {
         if (err || !res.ok) {
           reject(err);
@@ -70,7 +70,7 @@ const contentWords = (url, options) => {
 const tagPageLinks = (url) => {
   const promise = new Promise((resolve, reject) => {
     request
-      .get(encodeURI(url))
+      .get(encodeURI(decodeURI(url)))
       .end((err, res) => {
         if (err || !res.ok) {
           reject(err);
@@ -112,7 +112,7 @@ const contentLinks = (url, base) => {
 
   const promise = new Promise((resolve, reject) => {
     request
-      .get(encodeURI(url))
+      .get(encodeURI(decodeURI(url)))
       .end((err, res) => {
         if (err || !res.ok) {
           reject(err);

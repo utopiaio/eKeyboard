@@ -6,8 +6,7 @@ const cheerio = require('cheerio');
 const _ = require('lodash');
 
 /**
- * Amharic word scraper.
- * It'll ONLY extract words, no numbers or single letters words.
+ * given an article it'll extract words, no numbers or single letters words.
  *
  * @param  {String}   url
  * @param  {Object}   options

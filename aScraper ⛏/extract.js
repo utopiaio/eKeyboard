@@ -38,15 +38,11 @@ contentWordQueue.drain = () => {
   }
 
   fs.writeFile('./train.txt', file, (err) => {
-    if (err) {
-      console.error(err);
-    }
+    if (err) console.error(err);
   });
 
   fs.writeFile('./train.json', JSON.stringify(train), (err) => {
-    if (err) {
-      console.log(err);
-    }
+    if (err) console.error(err);
   });
 };
 

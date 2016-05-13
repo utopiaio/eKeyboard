@@ -22,7 +22,7 @@ Then comes the awesome part, where you go to get a cup of ☕️ or a couple of 
 I got ~62K(61,788) words. All extracted from the very organized and well made [Ethiopian Reporter](http://www.ethiopianreporter.com). With little tweaking you can extract words from other Amharic sites. If you do, please send a pull request so the the dictionary grows.
 
 #### ⚠️ **Update** ⚠️
-Got some public documents which I got ~20K more words. Dictionary size now stands at 83K (83,293) 🙌
+Got some public documents which added ~20K words. Dictionary now stands at 83K (83,293) 🙌
 
 Links
 - [http://www.ethiopianreporter.com/tags/ዜና](http://www.ethiopianreporter.com/tags/ዜና)

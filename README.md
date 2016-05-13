@@ -62,5 +62,6 @@ I'm currently a MSc. student and have two full-time jobs, so this project will b
 - Eskinder, co-founder of [AhdooTec](www.ahadootec.com)
 - [ሹክሹክታ Facebook group](https://www.facebook.com/Shukshukta)
 - [@jixtes](https://github.com/jixtes)
+- [@yonihahasis](https://github.com/yonihahasis)
 
 🌟🌟🌟 **If you have any idea please create an issue or a merge request.** 🌟🌟🌟

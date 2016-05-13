@@ -15,9 +15,7 @@ const contentWordQueue = async.queue((contentLink, callback) => {
     .then((cWords) => {
       for (const word in cWords) {
         if ({}.hasOwnProperty.call(cWords, word) === true) {
-          train[word] = train.hasOwnProperty(word)
-            ? train[word] + cWords[word]
-            : cWords[word];
+          train[word] = train.hasOwnProperty(word) ? train[word] + cWords[word] : cWords[word];
         }
       }
 
@@ -30,14 +28,7 @@ const contentWordQueue = async.queue((contentLink, callback) => {
 }, 8);
 
 contentWordQueue.drain = () => {
-  let file = '';
-  for (const word in train) {
-    if ({}.hasOwnProperty.call(train, word) === true) {
-      file += `${word}\n`;
-    }
-  }
-
-  fs.writeFile('./train.txt', file, (err) => {
+  fs.writeFile('./train.txt', Object.keys(train).join('\n'), (err) => {
     if (err) console.error(err);
   });
 

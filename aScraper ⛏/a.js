@@ -1,6 +1,3 @@
-// eslint-disable-next-line
-'use strict';
-
 const request = require('superagent');
 const cheerio = require('cheerio');
 const _ = require('lodash');

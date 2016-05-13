@@ -43,9 +43,8 @@ const contentWords = (url, options) => {
           if (options.frequency === true) {
             const frequency = {};
 
-            allWords.every((word) => {
+            allWords.forEach((word) => {
               frequency[word] = frequency.hasOwnProperty(word) === true ? ++frequency[word] : 1;
-              return true;
             });
 
             resolve(frequency);

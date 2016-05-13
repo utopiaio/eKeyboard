@@ -6,7 +6,7 @@ const cheerio = require('cheerio');
 const _ = require('lodash');
 
 /**
- * given an article it'll extract words, no numbers or single letters words.
+ * given an article url it'll extract words, no numbers or single letters words.
  *
  * @param  {String}   url
  * @param  {Object}   options
@@ -14,15 +14,9 @@ const _ = require('lodash');
  * @param  {Boolean}  options.frequency
  * @return {Promise}
  */
-const contentWords = (url, options) => {
-  // I'm not going to force you to use node-v6...not yet 😎
-  if (options === undefined) {
-    // eslint-disable-next-line
-    options = { selector: 'body', unique: false, frequency: true };
-  } else {
-    // eslint-disable-next-line
-    options = Object.assign({}, { selector: 'body', unique: false, frequency: true }, options);
-  }
+const contentWords = (url, options = { selector: 'body', unique: false, frequency: true }) => {
+  // I'm not going to force you to use node-v6+...not yet 😎...i lied
+  Object.assign(options, { selector: 'body', unique: false, frequency: true }, options);
 
   const promise = new Promise((resolve, reject) => {
     request
@@ -103,12 +97,7 @@ const tagPageLinks = (url) => {
  * @param {String} base url to be used if the link extracted starts with `/`
  * @return {Promise}
  */
-const contentLinks = (url, base) => {
-  if (base === undefined) {
-    // eslint-disable-next-line
-    base  = '';
-  }
-
+const contentLinks = (url, base = '') => {
   const promise = new Promise((resolve, reject) => {
     request
       .get(encodeURI(decodeURI(url)))

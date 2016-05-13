@@ -6,6 +6,7 @@ const contentLinks = require('./a').contentLinks;
 const contentWords = require('./a').contentWords;
 const fs = require('fs');
 
+const WORKERS = 8;
 const train = JSON.parse(fs.readFileSync('./train.json', { encoding: 'utf8' }));
 
 // queue for extracting words from `contentLink`
@@ -25,7 +26,7 @@ const contentWordQueue = async.queue((contentLink, callback) => {
     .catch((err) => {
       callback(err);
     });
-}, 8);
+}, WORKERS);
 
 contentWordQueue.drain = () => {
   fs.writeFile('./train.txt', Object.keys(train).join('\n'), (err) => {
@@ -50,7 +51,7 @@ const contentLinkQueue = async.queue((pageLink, callback) => {
     .catch((err) => {
       callback(err);
     });
-}, 8);
+}, WORKERS);
 
 // queue for extracting pages from `tagLink`
 const tagPageLinkQueue = async.queue((tagLink, callback) => {
@@ -63,7 +64,7 @@ const tagPageLinkQueue = async.queue((tagLink, callback) => {
     .catch((err) => {
       console.error(err);
     });
-}, 2);
+}, WORKERS);
 
 process.argv.forEach((arg, index) => {
   if (index > 1) {

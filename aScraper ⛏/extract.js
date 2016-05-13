@@ -7,10 +7,12 @@ const contentWords = require('./a').contentWords;
 const fs = require('fs');
 
 const WORKERS = 8;
+const STATUS = { QUEUE: 0, COMPLETED: 0 };
 const train = JSON.parse(fs.readFileSync('./train.json', { encoding: 'utf8' }));
 
 // queue for extracting words from `contentLink`
 const contentWordQueue = async.queue((contentLink, callback) => {
+  ++STATUS.QUEUE;
   console.log(`⛏  extracting ${decodeURI(contentLink)}...`);
   contentWords(contentLink, { selector: '.article_content', frequency: true })
     .then((cWords) => {
@@ -20,7 +22,9 @@ const contentWordQueue = async.queue((contentLink, callback) => {
         }
       }
 
-      console.log(`✅  done extracting from ${decodeURI(contentLink)}`);
+      ++STATUS.COMPLETED;
+      const PERCENT = ((STATUS.COMPLETED / STATUS.QUEUE) * 100).toFixed(1);
+      console.log(`✅  [${PERCENT}%] ${decodeURI(contentLink)} `);
       callback();
     })
     .catch((err) => {

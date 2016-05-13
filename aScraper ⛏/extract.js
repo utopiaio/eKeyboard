@@ -69,7 +69,7 @@ const contentLinkQueue = async.queue((pageLink, callback) => {
 const tagPageLinkQueue = async.queue((tagLink, callback) => {
   tagPageLinks(tagLink)
     .then((tPageLinks) => {
-      pageLinks.forEach(tPageLink => {
+      tPageLinks.forEach(tPageLink => {
         contentLinkQueue.push(tPageLink);
       });
     })

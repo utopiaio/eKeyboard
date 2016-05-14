@@ -7,6 +7,7 @@ const extractor = require('./../a');
 const fs = require('fs');
 
 const WORKERS = 8;
+console.log('Processing...');
 const train = JSON.parse(fs.readFileSync('./../train.json', { encoding: 'utf8' }));
 
 const extractorQueue = async.queue((link, callback) => {
@@ -38,11 +39,12 @@ extractorQueue.drain = () => {
 };
 
 // queue for extracting content links from `pageLink`
+const CONTENT_LINKS = [];
 const contentLinkQueue = async.queue((pageLink, callback) => {
   contentLinks(pageLink, 'http://www.ethiopianreporter.com')
     .then((cLinks) => {
       cLinks.forEach((cLink) => {
-        extractorQueue.push(cLink);
+        CONTENT_LINKS.push(cLink);
       });
 
       callback();
@@ -52,12 +54,21 @@ const contentLinkQueue = async.queue((pageLink, callback) => {
     });
 }, WORKERS);
 
+contentLinkQueue.drain = () => {
+  // this makes sure we're dispatching all loads at once
+  // else the whole thing becomes `async` and things start to fall apart
+  CONTENT_LINKS.forEach((cLink) => {
+    extractorQueue.push(cLink);
+  });
+};
+
 // queue for extracting pages from `tagLink`
+const TAGPAGE_LINKS = [];
 const tagPageLinkQueue = async.queue((tagLink, callback) => {
   tagPageLinks(tagLink)
     .then((tPageLinks) => {
       tPageLinks.forEach((tPageLink) => {
-        contentLinkQueue.push(tPageLink);
+        TAGPAGE_LINKS.push(tPageLink);
       });
 
       callback();
@@ -66,6 +77,12 @@ const tagPageLinkQueue = async.queue((tagLink, callback) => {
       callback(err);
     });
 }, WORKERS);
+
+tagPageLinkQueue.drain = () => {
+  TAGPAGE_LINKS.forEach((tPageLink) => {
+    contentLinkQueue.push(tPageLink);
+  });
+}
 
 process.argv.forEach((arg, index) => {
   if (index > 1) {

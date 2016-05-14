@@ -24,8 +24,7 @@ const contentWords = (url, options = { selector: 'body', unique: false, frequenc
         } else {
           let allWords = cheerio.load(res.text)(options.selector)
                                 .text()
-                                .replace(/[\u135D-\u137C፡]/g, ' ') // some use :: instead of ።
-                                .match(/[\u1200-\u137C]{2,}/g); // ignoring single letter words
+                                .match(/[\u1200-\u135A]{2,}/g); // ignoring single letter words
 
           if (options.unique === true) {
             allWords = _.uniq(allWords);

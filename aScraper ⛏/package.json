@@ -2,7 +2,7 @@
   "name": "ascraper",
   "version": "1.0.0",
   "description": "Scrapes Amharic words from websites",
-  "main": "extractWeb.js",
+  "main": "a.js",
   "scripts": {},
   "keywords": [],
   "author": {

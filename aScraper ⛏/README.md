@@ -5,9 +5,9 @@ Simple [Amharic]scraper built with [cheerio](https://github.com/cheeriojs/cheeri
 I don't have plans to publish this *scraper* to npm (it's too specific for "general" use), download this repository, `cd` to `aScraper ⛏` folder and `npm install`
 
 ```shell
-$ node extractWeb.js <tagLinks>
-$ node extractWeb.js http://www.ethiopianreporter.com/tags/ዜና http://www.ethiopianreporter.com/tags/ኪንና-ባህል
-$ node extractFile.js <filePath>
+$ node ethiopianreporter/extract.js <tagLinks>
+$ node ethiopianreporter/extract.js http://www.ethiopianreporter.com/tags/ዜና http://www.ethiopianreporter.com/tags/ኪንና-ባህል
+$ node file/extract.js <file>
 ```
 
 ```
@@ -18,11 +18,8 @@ train.txt -> word\n
 
 Then comes the awesome part, where you go to get a cup of ☕️ or a couple of 🍺🍺🍺
 
-### Back from the bar (yes, I'm no happy either)
-I got ~62K(61,788) words. All extracted from the very organized and well made [Ethiopian Reporter](http://www.ethiopianreporter.com). With little tweaking you can extract words from other Amharic sites. If you do, please send a pull request so the the dictionary grows.
-
-#### ⚠️ **Update** ⚠️
-Got some public documents which added ~20K words. Dictionary now stands at 83K (83,293) 🙌
+### Sources
+- [Ethiopian Reporter](http://www.ethiopianreporter.com) (~60K)
 
 Links
 - [http://www.ethiopianreporter.com/tags/ዜና](http://www.ethiopianreporter.com/tags/ዜና)

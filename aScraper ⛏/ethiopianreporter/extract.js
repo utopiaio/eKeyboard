@@ -1,26 +1,25 @@
 /*eslint no-console: ["allow"]*/
 
 const async = require('async');
-const tagPageLinks = require('./a').tagPageLinks;
-const contentLinks = require('./a').contentLinks;
-const contentWords = require('./a').contentWords;
+const tagPageLinks = require('./util').tagPageLinks;
+const contentLinks = require('./util').contentLinks;
+const extractor = require('./../a');
 const fs = require('fs');
 
 const WORKERS = 8;
-const train = JSON.parse(fs.readFileSync('./train.json', { encoding: 'utf8' }));
+const train = JSON.parse(fs.readFileSync('./../train.json', { encoding: 'utf8' }));
 
-// queue for extracting words from `contentLink`
-const contentWordQueue = async.queue((contentLink, callback) => {
-  console.log(`⛏  extracting ${decodeURI(contentLink)}...`);
-  contentWords(contentLink, { selector: '.article_content', frequency: true })
-    .then((cWords) => {
-      for (const word in cWords) {
-        if ({}.hasOwnProperty.call(cWords, word) === true) {
-          train[word] = train.hasOwnProperty(word) ? train[word] + cWords[word] : cWords[word];
+const extractorQueue = async.queue((link, callback) => {
+  console.log(`⛏  extracting ${decodeURI(link)}...`);
+  extractor(link, { selector: '.article_content' })
+    .then((words) => {
+      for (const word in words) {
+        if ({}.hasOwnProperty.call(words, word) === true) {
+          train[word] = train.hasOwnProperty(word) ? train[word] + words[word] : words[word];
         }
       }
 
-      console.log(`✅  done extracting from ${decodeURI(contentLink)}`);
+      console.log(`✅  done extracting from ${decodeURI(link)}`);
       callback();
     })
     .catch((err) => {
@@ -28,12 +27,12 @@ const contentWordQueue = async.queue((contentLink, callback) => {
     });
 }, WORKERS);
 
-contentWordQueue.drain = () => {
-  fs.writeFile('./train.txt', Object.keys(train).join('\n'), (err) => {
+extractorQueue.drain = () => {
+  fs.writeFile('./../train.txt', Object.keys(train).join('\n'), (err) => {
     if (err) console.error(err);
   });
 
-  fs.writeFile('./train.json', JSON.stringify(train), (err) => {
+  fs.writeFile('./../train.json', JSON.stringify(train), (err) => {
     if (err) console.error(err);
   });
 };
@@ -43,7 +42,7 @@ const contentLinkQueue = async.queue((pageLink, callback) => {
   contentLinks(pageLink, 'http://www.ethiopianreporter.com')
     .then((cLinks) => {
       cLinks.forEach(cLink => {
-        contentWordQueue.push(cLink);
+        extractorQueue.push(cLink);
       });
 
       callback();

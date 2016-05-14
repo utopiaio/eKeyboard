@@ -18,7 +18,7 @@ const _ = require('lodash');
  * @return {Promise}
  */
 module.exports = (url, options = { selector: 'body', unique: false, frequency: true }) => {
-  Object.assign({ selector: 'body', unique: false, frequency: true }, options);
+  Object.assign(options, { selector: 'body', unique: false, frequency: true }, options);
 
   const promise = new Promise((resolve, reject) => {
     const extract = (content) => {

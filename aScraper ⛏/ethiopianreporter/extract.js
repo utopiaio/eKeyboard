@@ -6,8 +6,8 @@ const contentLinks = require('./util').contentLinks;
 const extractor = require('./../a');
 const fs = require('fs');
 
-const WORKERS = 8;
-console.log('Processing...');
+const WORKERS = 4;
+console.log('⏲  processing...');
 const train = JSON.parse(fs.readFileSync('./../train.json', { encoding: 'utf8' }));
 
 const extractorQueue = async.queue((link, callback) => {

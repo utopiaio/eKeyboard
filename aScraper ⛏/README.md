@@ -20,6 +20,7 @@ Then comes the awesome part, where you go to get a cup of ☕️ or a couple of 
 
 ### Sources
 - [Ethiopian Reporter](http://www.ethiopianreporter.com) (~110K)
+- [JW.ORG](https://www.jw.org/am) (~26K)
 
 Links
 - [http://www.ethiopianreporter.com/tags/ዜና](http://www.ethiopianreporter.com/tags/ዜና)

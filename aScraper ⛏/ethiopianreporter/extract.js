@@ -59,9 +59,11 @@ const tagPageLinkQueue = async.queue((tagLink, callback) => {
       tPageLinks.forEach((tPageLink) => {
         contentLinkQueue.push(tPageLink);
       });
+
+      callback();
     })
     .catch((err) => {
-      console.error(err);
+      callback(err);
     });
 }, WORKERS);
 

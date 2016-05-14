@@ -41,7 +41,7 @@ extractorQueue.drain = () => {
 const contentLinkQueue = async.queue((pageLink, callback) => {
   contentLinks(pageLink, 'http://www.ethiopianreporter.com')
     .then((cLinks) => {
-      cLinks.forEach(cLink => {
+      cLinks.forEach((cLink) => {
         extractorQueue.push(cLink);
       });
 
@@ -56,7 +56,7 @@ const contentLinkQueue = async.queue((pageLink, callback) => {
 const tagPageLinkQueue = async.queue((tagLink, callback) => {
   tagPageLinks(tagLink)
     .then((tPageLinks) => {
-      tPageLinks.forEach(tPageLink => {
+      tPageLinks.forEach((tPageLink) => {
         contentLinkQueue.push(tPageLink);
       });
     })

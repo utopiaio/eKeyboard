@@ -57,7 +57,8 @@ const contentLinks = (url, base = '') => {
         if (err || !res.ok) {
           reject(err);
         } else {
-          const links = cheerio.load(res.text)('#page-main-content article .post-title a');
+          let links = cheerio.load(res.text)('#page-main-content article .post-title a');
+          links = _.filter(links, link => decodeURI(link.attribs.href).search(/[\u1200-\u135A]/) > -1);
 
           // cheerio has `map` which is acting weird, it's returning holes (i think)
           // so i had to fall-back to the inevitable _

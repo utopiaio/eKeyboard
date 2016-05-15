@@ -1,14 +1,16 @@
 /*eslint no-console: ["allow"]*/
 
+const fs = require('fs');
+const path = require('path');
 const async = require('async');
 const tagPageLinks = require('./util').tagPageLinks;
 const contentLinks = require('./util').contentLinks;
 const extractor = require('./../a');
-const fs = require('fs');
+const TRAIN_PATH = path.join(path.resolve('./../../'), 'ቃሎች 📖', 'train');
 
 const WORKERS = 4;
 console.log('⏲  processing...');
-const train = JSON.parse(fs.readFileSync('./../train.json', { encoding: 'utf8' }));
+const train = JSON.parse(fs.readFileSync(`${TRAIN_PATH}.json`, { encoding: 'utf8' }));
 
 const extractorQueue = async.queue((link, callback) => {
   console.log(`⛏  extracting ${decodeURI(link)}...`);
@@ -29,11 +31,11 @@ const extractorQueue = async.queue((link, callback) => {
 }, WORKERS);
 
 extractorQueue.drain = () => {
-  fs.writeFile('./../train.txt', Object.keys(train).join('\n'), (err) => {
+  fs.writeFile(`${TRAIN_PATH}.txt`, Object.keys(train).join('\n'), (err) => {
     if (err) console.error(err);
   });
 
-  fs.writeFile('./../train.json', JSON.stringify(train), (err) => {
+  fs.writeFile(`${TRAIN_PATH}.json`, JSON.stringify(train), (err) => {
     if (err) console.error(err);
   });
 };

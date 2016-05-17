@@ -55,8 +55,6 @@ Android?...Nope 😔, I have no interest on implementing the algorithm for Andro
 
 Implement the algorithm -> iOS Keyboard (iOS 8+) -> Web (Chrome Plugin).
 
-I'm currently a MSc. student and have two full-time jobs, so this project will be maintained on my free time.
-
 ### Contributions
 - [@haworku](http://github.com/haworku)
 - Eskinder, co-founder of [AhdooTec](www.ahadootec.com)

@@ -1,9 +1,12 @@
-### ⚠️ Update ⚠️
-I've been informed by [@jixtes](https://github.com/jixtes) that Google already has the `Amharic-English` implementation.
+### ~⚠️ Update ⚠️~
+~I've been informed by [@jixtes](https://github.com/jixtes) that Google already has the `Amharic-English` implementation.~
 
-Head on to [Google Input](http://www.google.com/inputtools/try/) and select the `Amharic` input. It requires a working Internet connection for it to come-up with the predictions.
+~Head on to [Google Input](http://www.google.com/inputtools/try/) and select the `Amharic` input. It requires a working Internet connection for it to come-up with the predictions.~
 
-**So now, `eKeyboard` project is more of a reimplementation.**
+~**So now, `eKeyboard` project is more of a reimplementation.**~
+
+### HOL'UP [Update 2.0]
+Google-Input (on Amharic) only has _sound normalizing_; no distance computation or auto-correction. Making eKeyboard [once again] a **new** endeavor
 
 ### eKeyboard
 Make typing Amharic [on mobile] great [again]. (no association)
@@ -46,7 +49,7 @@ It has to *guess* words. I'll have to get a list of words and come up with a map
 Well, I'm in a bit of a pickle here, turns out I can not find list of Amharic words so I'll have to mine for words. The obvious way is to scrape some Amharic websites. Which will be a violation of their copyright, almost all don't allow scraping for ANY purpose (in this case JUST extracting words and frequency). I'll try to get a consent, if not, I'll have to go down *that* road.
 
 ### Roadmap
-- [ ] Dictionary
+- [x] Dictionary
 - [ ] Algorithm
 - [ ] iOS Keyboard (iOS 8+)
 - [ ] Web - Chrome Plugin
@@ -61,5 +64,3 @@ Implement the algorithm -> iOS Keyboard (iOS 8+) -> Web (Chrome Plugin).
 - [ሹክሹክታ Facebook group](https://www.facebook.com/Shukshukta)
 - [@jixtes](https://github.com/jixtes)
 - [@yonihahasis](https://github.com/yonihahasis)
-
-🌟🌟🌟 **If you have any idea please create an issue or a merge request.** 🌟🌟🌟

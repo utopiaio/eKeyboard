@@ -60,7 +60,7 @@ Implement the algorithm -> iOS Keyboard (iOS 8+) -> Web (Chrome Plugin).
 
 ### Contributions
 - [@haworku](http://github.com/haworku)
-- Eskinder, co-founder of [AhdooTec](www.ahadootec.com)
+- Eskinder, co-founder of [AhdooTec](http://www.ahadootec.com)
 - [ሹክሹክታ Facebook group](https://www.facebook.com/Shukshukta)
 - [@jixtes](https://github.com/jixtes)
 - [@yonihahasis](https://github.com/yonihahasis)
